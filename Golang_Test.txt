@@ -1,0 +1,2 @@
+Hello, This is word count golang program.
+It call a rest service to get the word count.

@@ -44,10 +44,6 @@ func main() {
 		flag.Usage()
 		os.Exit(0)
 	}
-	if filePath == "" {
-		fmt.Print("Please mention the filePath as command line argument and use command go run main.go -filePath=<FilePath>. Use -help to get Help. ")
-		os.Exit(0)
-	}
 
 	err := godotenv.Load("local.env")
 	if err != nil {
@@ -58,6 +54,11 @@ func main() {
 	if url == "" {
 		fmt.Println("WORD_COUNT_SERVICE_URL in local.env is empty or not mentioned")
 		os.Exit(0)
+	}
+
+	if filePath == "" {
+		pwd, _ := os.Getwd()
+		filePath = pwd + "/Golang_Test.txt"
 	}
 	// Open file to read the string
 	file, err := os.Open(filePath)
